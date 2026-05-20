@@ -1,0 +1,886 @@
+/* ============================================================
+   style.css — Brê | Brechós de Salto (SP)
+   Projeto Integrador — IFSP Campus Salto
+   Baseado no protótipo Figma "Desktop - 3"
+   ============================================================ */
+
+
+/* ============================================================
+   SEÇÃO 0 — VARIÁVEIS GLOBAIS E RESET
+   Define a paleta de cores, fontes e medidas usadas em todo
+   o projeto, e reseta comportamentos padrão do navegador.
+   ============================================================ */
+
+:root {
+  /* --- Paleta de cores (extraída do Figma) --- */
+  --cor-verde:         #B2EB60;   /* fundo verde: topo, logo, seção impactos */
+  --cor-roxo-escuro:   #6D248C;   /* fundo do menu de navegação (pill) */
+  --cor-roxo-claro:    #B07ABF;   /* faixa "Rectangle 4" na seção Sobre */
+  --cor-bronze:        rgba(195, 145, 88, 0.70); /* fundo das abas do menu */
+  --cor-texto:         #36150B;   /* cor principal de todos os textos */
+  --cor-branca:        #FFFFFF;   /* fundo da página e textos sobre escuro */
+  --cor-sombra-leve:   rgba(0, 0, 0, 0.25);
+
+  /* --- Tipografia --- */
+  --fonte-principal: 'Montserrat', sans-serif;
+
+  /* --- Largura máxima do layout (baseada nos 1440px do Figma) --- */
+  --largura-max: 1600px;
+
+  /* --- Espaçamentos padrão de seção --- */
+  --padding-secao: 60px 40px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-principal);
+  color: var(--cor-texto);
+  background-color: var(--cor-branca);
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* ============================================================
+   SEÇÃO 1 — BARRA SUPERIOR VERDE (ret_topo)
+   Faixa verde com slogan no topo da página.
+   Referência Figma: "ret_topo" + texto "ENCONTRE A SUSTENTA..."
+   ============================================================ */
+
+.ret_topo {
+  width: 100%;
+  height: 60px;
+  background-color: var(--cor-verde);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.ret_topo__slogan {
+  font-family: var(--fonte-principal);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 7px;
+  color: var(--cor-texto);
+  text-align: center;
+  line-height: 1;
+}
+
+
+/* ============================================================
+   SEÇÃO 2 — CABEÇALHO / HEADER (cabecalho)
+   Contém a imagem hero, o banner verde com logo Brê
+   e a barra de navegação com pill roxo e abas de menu.
+   Referência Figma: "img_Topo", "contorno_logo",
+   "Brê_cabecalho", "ret_projeto-porquê-contato"
+   ============================================================ */
+
+.cabecalho {
+  position: relative;
+  width: 100%;
+}
+
+/* --- Imagem hero (banner de topo) --- */
+/* Referência Figma: "img_Topo" — 1440 × 750 px */
+.img_topo {
+  width: 100%;
+  height: 750px;
+  overflow: hidden;
+}
+
+.img_topo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* --- Faixa verde com logo Brê --- */
+/* Referência Figma: "contorno_logo" — background #B2EB60,
+   borda 10px solid #B2EB60; "Brê_cabecalho" — imagem centralizada */
+.contorno_logo {
+  width: 100%;
+  background-color: var(--cor-verde);
+  border: 10px solid var(--cor-verde);
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 316px;
+}
+
+.brecabecalho {
+  max-width: 1182px;
+  width: 85%;
+  height: auto;
+  max-height: 285px;
+  object-fit: contain;
+}
+
+/* --- Barra de navegação (pill roxo com 3 abas) --- */
+/* Referência Figma: "ret_projeto-porquê-contato" — pill roxo
+   1020.5px × 60px, border-radius 200px, opacity 0.8 */
+.navegacao {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 0 12px;
+  background-color: var(--cor-branca);
+}
+
+.ret_projeto-porcue-contato {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: min(1020px, 90%);
+  height: 60px;
+  background-color: var(--cor-roxo-escuro);
+  opacity: 0.8;
+  border-radius: 200px;
+  padding: 0 40px;
+}
+
+/* --- Cada aba do menu (item de navegação) --- */
+/* Referência Figma: "retangulo abas" (bronze 137–154 × 31–32 px)
+   + "projeto", "o porquê", "contato" em Montserrat 800 24px 
+.aba {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+/* Retângulo dourado/bronze atrás do texto da aba */
+.retangulo_aba {
+  position: absolute;
+  inset: 0;
+  background-color: var(--cor-bronze);
+  box-shadow: 0px 4px 4px var(--cor-sombra-leve);
+  border-radius: 4px;
+  z-index: 0;
+}
+
+.aba__link {
+  position: relative;
+  z-index: 1;
+  font-family: var(--fonte-principal);
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: 3px;
+  color: var(--cor-branca);
+  text-shadow: 0px 4px 4px var(--cor-sombra-leve);
+  padding: 4px 14px;
+  white-space: nowrap;
+  line-height: 1.2;
+  transition: opacity 0.2s ease;
+}
+
+.aba__link:hover {
+  opacity: 0.85;
+}
+
+/* Larguras individuais de cada aba conforme Figma */
+.aba--projeto   .retangulo_aba { width: 137px; height: 32px; }
+.aba--porcue    .retangulo_aba { width: 154px; height: 31px; }
+.aba--contato   .retangulo_aba { width: 154px; height: 31px; }
+
+
+/* ============================================================
+   SEÇÃO 3 — DESTAQUES DA SEMANA
+   Fundo texturizado (papel amassado cinza) com título,
+   banner do mapa e 4 cards de brechós em destaque.
+   Referência Figma: "grade_destaques-semana" (fundo textura),
+   "Destaques da semana", "img_destaques-semana" (mapa),
+   "dest_1", "dest_2", "ddest_3", "dest_4"
+   ============================================================ */
+
+.destaques-semana {
+  width: 100%;
+  padding: 40px 60px 50px;
+  background-image: url('../imagens/fundo_quadriculado.jpg');
+  background-size: cover;
+  align-items: center;
+  background-repeat: repeat;
+  border: 1px solid #000000;
+  box-shadow: inset 0px 1px 4px rgba(12, 12, 13, 0.05);
+}
+
+/* --- Título da seção --- */
+/* Referência Figma: "Destaques da semana" — Montserrat 800 32px,
+   letter-spacing 3px, cor #36150B */
+.destaques-semana__titulo {
+  font-family: var(--fonte-principal);
+  font-weight: 800;
+  font-size: 32px;
+  letter-spacing: 3px;
+  color: var(--cor-texto);
+  margin-bottom: 28px;
+}
+
+/* --- Imagem/moldura do mapa --- */
+/* Referência Figma: "img_destaques-semana" — 1382 × 300px,
+   border-radius 40px */
+.img_destaques-semana--mapa {
+  width: 100%;
+  max-width: 1382px;
+  height: 300px;
+  border-radius: 40px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.img_destaques-semana--mapa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Grid dos 4 cards de brechós --- */
+.destaques-semana__grid {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* --- Card individual de brechó --- */
+/* Referência Figma: "dest_1" a "dest_4" — 246 × 222px,
+   border-radius 50px, imagem de fundo */
+.destaque-card {
+  width: 246px;
+  height: 222px;
+  border-radius: 50px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.destaque-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.22);
+}
+
+.destaque-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Nome do brechó sobreposto no card */
+.destaque-card__nome {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 12px;
+  background: rgba(54, 21, 11, 0.65);
+  color: var(--cor-branca);
+  font-family: var(--fonte-principal);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+
+/* ============================================================
+   SEÇÃO 4 — IMPACTOS ALÉM DA MODA (fundo verde)
+   Fundo verde (#B2EB60), título principal, dois blocos
+   de texto + imagem (texto/esq + img/dir e img/esq + texto/dir).
+   Referência Figma: "fundo_verde", "Impactos além da moda:",
+   "Quais os impactos (in)visíveis...", "img_3", "img_1"
+   ============================================================ */
+
+.fundo_verde {
+  background-color: var(--cor-verde);
+}
+
+.impactos {
+  width: 100%;
+  padding: 60px 40px 80px;
+  position: relative;
+}
+
+/* --- Imagem decorativa divisória (faixa horizontal rotacionada) --- */
+/* Referência Figma: "image 3", "image 2", "image 4" — 56px height,
+   rotacionadas 90°, usadas como separadores entre seções 
+.image {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}*/
+
+.image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+/* --- Cabeçalho da seção Impactos --- */
+.impactos__cabecalho {
+  max-width: 1428px;
+  margin-bottom: 48px;
+}
+
+/* Supertítulo grande: "Impactos além da moda:" */
+/* Referência Figma: fonte 80px, weight 800, letter-spacing 3px */
+.impactos__supertitulo {
+  font-family: var(--fonte-principal);
+  font-weight: 800;
+  font-size: clamp(40px, 5.5vw, 80px);
+  letter-spacing: 3px;
+  color: var(--cor-texto);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+/* Subtítulo: "Quais os impactos (in)visíveis..." */
+/* Referência Figma: fonte 48px, weight 800, letter-spacing 3px */
+.impactos__titulo {
+  font-family: var(--fonte-principal);
+  font-weight: 800;
+  font-size: clamp(26px, 3.3vw, 48px);
+  letter-spacing: 3px;
+  color: var(--cor-texto);
+  line-height: 1.15;
+}
+
+/* --- Bloco 1: Texto esquerda + Imagem direita --- */
+/* Referência Figma: texto (left 45px) + "img_3" (left 700px, 720 × 1027px) */
+.impactos__bloco {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+  margin-bottom: 80px;
+}
+
+.impactos__bloco--1 {
+  flex-direction: row;
+}
+
+.impactos__bloco--2 {
+  flex-direction: row;
+}
+
+/* Texto corpo dos blocos de impacto */
+/* Referência Figma: Montserrat 800 32px, line-height 52px,
+   letter-spacing 3px, cor #36150B */
+.impactos__texto-esquerda,
+.impactos__texto-direita {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.impactos__texto-esquerda p,
+.impactos__texto-direita p {
+  font-family: var(--fonte-principal);
+  font-weight: 800;
+  font-size: clamp(16px, 2.2vw, 32px);
+  line-height: 1.625;
+  letter-spacing: 3px;
+  color: var(--cor-texto);
+}
+
+/* Imagens dos blocos de impacto */
+/* Referência Figma: "img_3" — 720 × 1027px, drop-shadow;
+   "img_1" — 957 × 1196px */
+.impactos__imagem-direita,
+.impactos__imagem-esquerda {
+  flex: 0 0 auto;
+  width: clamp(280px, 45%, 720px);
+}
+
+.impactos__imagem-direita img,
+.impactos__imagem-esquerda img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0px 4px 4px var(--cor-sombra-leve));
+  border-radius: 12px;
+}
+
+
+
+
+.secao-moda__imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}*/
+
+/* ============================================================
+   SEÇÃO 6 — TRABALHO ANÁLOGO À ESCRAVIDÃO (trabalho-escravo)
+   Fundo escuro com imagem semitransparente (opacity 0.6).
+   Contém título + texto à esquerda e imagem à direita.
+   Referência Figma: "img_fundo-trab.anal.esc" (1440 × 2200,
+   opacity 0.6), "Trabalho análogo à escravidão na moda...",
+   "img_2" (712 × 944px)
+   ============================================================ */
+
+.trabalho-escravo {
+  width: 100%;
+  position: relative;
+  padding: 80px 40px 80px;
+  overflow: hidden;
+}
+
+/* Imagem de fundo com opacidade reduzida */
+/* Referência Figma: "img_fundo-trab.anal.esc" — opacity 0.6,
+   box-shadow, border 1px solid #000 */
+.img_fundo-trab-anal-esc {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.img_fundo-trab-anal-esc img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px var(--cor-sombra-leve);
+}
+
+/* Layout interno da seção (sobre o fundo) */
+.trabalho-escravo__conteudo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+  align-items: flex-start;
+  max-width: 1360px;
+}
+
+.trabalho-escravo__texto {
+  flex: 1;
+}
+
+/* Título da seção */
+/* Referência Figma: "Trabalho análogo à escravidão na moda:
+   um retrato silencioso do Brasi" — Montserrat 800 48px,
+   line-height 52px, letter-spacing 3px */
+.trabalho-escravo__titulo {
+  font-family: var(--fonte-principal);
+  font-weight: 800;
+  font-size: clamp(24px, 3.3vw, 48px);
+  letter-spacing: 3px;
+  color: var(--cor-texto);
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+
+/* Corpo de texto */
+/* Referência Figma: Montserrat 800 32px, line-height 52px,
+   letter-spacing 3px, cor #36150B */
+.trabalho-escravo__texto p {
+  font-family: var(--fonte-principal);
+  font-weight: 800;
+  font-size: clamp(16px, 2.2vw, 32px);
+  line-height: 1.625;
+  letter-spacing: 3px;
+  color: var(--cor-texto);
+}
+
+/* Imagem lateral */
+/* Referência Figma: "img_2" — 712 × 944px */
+.trabalho-escravo__imagem {
+  flex: 0 0 auto;
+  width: clamp(260px, 45%, 712px);
+}
+
+.trabalho-escravo__imagem img {
+  width: 100%;
+  height: 50%;
+  border-radius: 8px;
+}
+
+
+/* ============================================================
+   SEÇÃO 7 — MAPA INTERATIVO (secao-mapa)
+   Seção com mapa de Salto (SP) mostrando a localização
+   dos brechós. Ocupa toda a largura (1440 × 960px no Figma).
+   Referência Figma: "mapa_interativo" / "mapa" — 1440 × 960px
+   ============================================================ */
+
+.secao-mapa {
+  width: 100%;
+  padding: 0;
+  position: relative;
+}
+
+/* Título visualmente oculto (acessibilidade) */
+.secao-mapa__titulo {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+/* Container do mapa */
+/* Referência Figma: "mapa_interativo" — width 1440px, height 960px,
+   box-shadow 0px 4px 4px rgba(0,0,0,0.25) */
+.mapa {
+  width: 100%;
+  height: clamp(400px, 66.6vw, 960px);
+  overflow: hidden;
+  box-shadow: 0px 4px 4px var(--cor-sombra-leve);
+}
+
+.mapa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ============================================================
+   SEÇÃO 8 — SOBRE O PROJETO (sobre-o-projeto)
+   Fundo texturizado. Contém:
+   - Título "SOBRE O PROJETO" em 128px
+   - Faixa roxa "Rectangle 4"
+   - Coluna esquerda: foto da equipe + molduras decorativas
+   - Coluna direita: nomes da equipe + texto descritivo
+   Referência Figma: segunda "grade_destaques-semana",
+   "SOBRE O PROJETO", "Rectangle 4", "img_nos",
+   "img_destaques-semana" (molduras), equipe, texto.
+   ============================================================ */
+
+.sobre-o-projeto {
+  padding: 60px 40px 80px;
+}
+
+/* Título principal da seção */
+/* Referência Figma: "SOBRE O PROJETO" — Montserrat 800 128px,
+   letter-spacing 6px, cor #36150B */
+.sobre-o-projeto__titulo {
+  font-family: var(--fonte-principal);
+  font-weight: 800;
+  font-size: clamp(48px, 9vw, 128px);
+  letter-spacing: 6px;
+  color: var(--cor-texto);
+  line-height: 1;
+  margin-bottom: 40px;
+}
+
+/* Faixa roxa horizontal */
+/* Referência Figma: "Rectangle 4" — 1473 × 163px,
+   background #B07ABF, box-shadow 0px 4px 15px rgba(0,0,0,0.25) */
+.rectangle-4 {
+  width: 100%;
+  max-width: 1473px;
+  height: 163px;
+  background-color: var(--cor-roxo-claro);
+  box-shadow: 0px 4px 15px var(--cor-sombra-leve);
+  border-radius: 4px;
+  margin: 0 auto 48px;
+}
+
+/* Layout de duas colunas: galeria (esq) + info (dir) */
+.sobre-o-projeto__conteudo {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* --- Coluna esquerda: foto da equipe + molduras --- */
+.sobre-o-projeto__galeria {
+  flex: 0 0 auto;
+  width: clamp(300px, 40%, 948px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Foto principal da equipe */
+/* Referência Figma: "img_nos" — 948 × 874px, border-radius 40px,
+   border-box */
+.img_nos {
+  width: 100%;
+  aspect-ratio: 948 / 874;
+  border-radius: 40px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.img_nos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Molduras decorativas empilhadas */
+.sobre-o-projeto__molduras {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Molduras individuais */
+/* Referência Figma: "img_destaques-semana" (4×) — 1006 × 300px,
+   border-radius 40px */
+.img_destaques-semana {
+  width: 100%;
+  height: 120px;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.img_destaques-semana img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Coluna direita: nomes + texto --- */
+.sobre-o-projeto__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Bloco de nomes da equipe */
+/* Referência Figma: "Yasmin de Alemida Livia Ferreira..." —
+   Montserrat 800 32px, line-height 52px, letter-spacing 3px */
+.sobre-o-projeto__equipe p {
+  font-family: var(--fonte-principal);
+  font-weight: 800;
+  font-size: clamp(18px, 2.2vw, 32px);
+  line-height: 1.625;
+  letter-spacing: 3px;
+  color: var(--cor-texto);
+}
+
+/* Texto descritivo do projeto */
+/* Referência Figma: "A gente criou esse projeto..." —
+   Montserrat 800 32px, line-height 52px, letter-spacing 3px,
+   width 1208px centralizado */
+.sobre-o-projeto__texto {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sobre-o-projeto__texto p {
+  font-family: var(--fonte-principal);
+  font-weight: 800;
+  font-size: clamp(16px, 2.2vw, 32px);
+  line-height: 1.625;
+  letter-spacing: 3px;
+  color: var(--cor-texto);
+}
+
+
+/* ============================================================
+   SEÇÃO 9 — RODAPÉ (rodape)
+   Rodapé simples com créditos do projeto e links de navegação.
+   Não existe no protótipo Figma mas foi adicionado para
+   completar o fluxo da página e atender a boas práticas.
+   ============================================================ */
+
+.rodape {
+  width: 100%;
+  background-color: var(--cor-texto);
+  padding: 40px;
+}
+
+.rodape__container {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.rodape__credito {
+  font-family: var(--fonte-principal);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--cor-verde);
+}
+
+.rodape__nav {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.rodape__link {
+  font-family: var(--fonte-principal);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--cor-branca);
+  transition: color 0.2s ease;
+}
+
+.rodape__link:hover {
+  color: var(--cor-verde);
+}
+
+
+/* ============================================================
+   SEÇÃO 10 — UTILITÁRIOS E ELEMENTOS AUXILIARES
+   Classes auxiliares reutilizáveis por toda a página.
+   ============================================================ */
+
+/* Classe utilitária para o fundo texturizado das seções
+   "grade_destaques-semana" (destaques e sobre o projeto) */
+.grade_destaques-semana {
+  background-image: url('../imagens/Design sem nome/fundo_quadriculado.jpg');
+  background-size: cover;
+  background-repeat: repeat;
+  border: 1px solid #000000;
+  box-shadow: inset 0px 1px 4px rgba(12, 12, 13, 0.05);
+}
+
+
+/* ============================================================
+   SEÇÃO 11 — RESPONSIVIDADE
+   Adaptações para telas menores (tablets e smartphones),
+   preservando a identidade visual do protótipo.
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .impactos__bloco--1,
+  .impactos__bloco--2 {
+    flex-direction: column;
+  }
+
+  .impactos__imagem-direita,
+  .impactos__imagem-esquerda {
+    width: 100%;
+  }
+
+  .trabalho-escravo__conteudo {
+    flex-direction: column;
+  }
+
+  .trabalho-escravo__imagem {
+    width: 100%;
+  }
+
+  .sobre-o-projeto__conteudo {
+    flex-direction: column;
+  }
+
+  .sobre-o-projeto__galeria {
+    width: 100%;
+  }
+
+  .ret_projeto-porcue-contato {
+    gap: 8px;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ret_topo__slogan {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .img_topo {
+    height: 400px;
+  }
+
+  .contorno_logo {
+    min-height: 180px;
+  }
+
+  .destaques-semana {
+    padding: 32px 24px 40px;
+  }
+
+  .destaques-semana__grid {
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .destaque-card {
+    width: 200px;
+    height: 180px;
+  }
+
+  .impactos {
+    padding: 40px 24px 60px;
+  }
+
+  .sobre-o-projeto {
+    padding: 40px 24px 60px;
+  }
+
+  .rodape__container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ret_projeto-porcue-contato {
+    height: auto;
+    padding: 10px 12px;
+    border-radius: 16px;
+  }
+
+  .aba__link {
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .secao-moda__linha span {
+    font-size: 40px;
+  }
+
+  .sobre-o-projeto__titulo {
+    font-size: 36px;
+  }
+
+  .ret_projeto-porcue-contato {
+    flex-direction: column;
+    height: auto;
+    border-radius: 20px;
+  }
+}
