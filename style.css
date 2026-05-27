@@ -230,7 +230,6 @@ a {
   background-size: cover;
   align-items: center;
   background-repeat: repeat;
-  border: 1px solid #000000;
   box-shadow: inset 0px 1px 4px rgba(12, 12, 13, 0.05);
 }
 
@@ -270,7 +269,7 @@ a {
   flex-direction: row;
   gap: 32px;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 /* --- Card individual de brechó --- */
