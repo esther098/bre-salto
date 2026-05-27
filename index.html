@@ -91,6 +91,21 @@
       </div>
 
     </section>
+    <!-- SEÇÃO DO MAPA INTERATIVO (substitua a seção existente) -->
+<section class="mapa-brecho-secao" id="mapa">
+  <h2 class="mapa-brecho-secao__titulo">📍 Brechós em Salto - Mapa Interativo</h2>
+  
+  <div class="mapa-brecho-container">
+    <div id="map" class="mapa-brecho-leaflet"></div>
+    <div class="mapa-brecho-info">
+      <input type="text" id="busca" class="mapa-brecho-busca" placeholder="🔍 Buscar brechó...">
+      <div id="resultados" class="mapa-brecho-resultados"></div>
+      <div id="detalhes" class="mapa-brecho-detalhes">
+        <p class="mapa-brecho-placeholder">📍 Clique em um ponto ou pesquise acima</p>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- ========== SEÇÃO: IMPACTOS (O PORQUÊ) ========== -->
     <section class="impactos fundo_verde" id="impactos" aria-labelledby="titulo-impactos">
@@ -297,6 +312,72 @@
       </nav>
     </div>
   </footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Inicializa o mapa
+    var map = L.map('map').setView([-23.2008, -47.2869], 13);
 
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    function normalizar(texto) {
+      return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    }
+
+    var locais = [
+      { nome:"Brechó Amor Perfeito", coords:[-23.20435,-47.29485], horario:"Seg a sex: 09h–18h30<br>Sáb: 09h–14h", endereco:"R. Rui Barbosa, 599 - Centro, Salto - SP, 13320-230", contato:"@brecho_amorperfeito_" },
+      { nome:"Lugu’s Brechó Chic", coords:[-23.20742,-47.29241], horario:"Seg a sex: 10h–12h / 13h30–17h30<br>Sáb: 10h–13h", endereco:"R. Prudente de Moraes, 153 - Centro, Salto - SP, 13320-160", contato:"@lugusbrechochic" },
+      { nome:"Brechó Helena Costa", coords:[-23.20405,-47.29673], horario:"Seg a sex: 09h30–18h30<br>Sáb: 09h–14h", endereco:"R. Joaquim Nabuco, 54 - Vila Teixeira, Salto - SP, 13320-370", contato:"(11) 95874-8716" },
+      { nome:"Brechó Três Irmãs", coords:[-23.18807,-47.27414], horario:"Seg a sáb: 10h–19h", endereco:"R. Rússia, 662 - Jardim Planalto, Salto - SP, 13322-230", contato:"@3brecho_irmas" },
+      { nome:"Brechó da Rê", coords:[-23.21251,-47.27302], horario:"Seg a sex: 09h–14h30<br>Sáb: 09h–14h<br>Dom: 09h–12h", endereco:"R. Botucatu, 197 - Jardim da Cidade, Salto - SP, 13323-080", contato:"@brechodaregina2" },
+      { nome:"Brechó Solidário Casa Naim", coords:[-23.20371,-47.28998], horario:"Seg a sex: 09h–18h<br>Sáb: 09h–13h", endereco:"R. Barão do Rio Branco, 376 - Centro, Salto - SP, 13320-270", contato:"@casanaimbazar" },
+      { nome:"Burguesinha Brechó Chic", coords:[-23.20680,-47.29408], horario:"Seg a sex: 09h–18h<br>Sáb: 09h–15h", endereco:"R. Monsenhor Couto, 386 - Centro, Salto - SP, 13320-210", contato:"(11) 99898-2582" },
+      { nome:"Closet das Meninas", coords:[-23.20531,-47.29359], horario:"Não informado", endereco:"R. Vinte e Três de Maio, 340 - Centro, Salto - SP, 13320-010", contato:"@closetdasmeninas.salto" },
+      { nome:"Zilda Brechó", coords:[-23.19202,-47.29399], horario:"Ter a sáb: 08h–17h", endereco:"R. Andiroba, 472 - Vila Flora, Salto - SP, 13321-120", contato:"(11) 99591-4082" },
+      { nome:"Madamme Brechó", coords:[-23.20061,-47.29908], horario:"Seg a sex: 09h–18h<br>Sáb: 09h–13h", endereco:"Av. Dom Pedro II, 1207 - Centro, Salto - SP, 13320-241", contato:"(11) 95629-1776" },
+      { nome:"Brechó Encontro Perfeito", coords:[-23.19256,-47.29071], horario:"Seg a sex: 09h–18h<br>Sáb: 09h–14h", endereco:"R. Emílio Ribas, 222 - Bela Vista, Salto - SP, 13321-360", contato:"(11) 96701-3365" },
+      { nome:"Brechó da Márcia", coords:[-23.20443,-47.29646], horario:"Ter a sex: 09h–18h<br>Sáb: 09h–13h", endereco:"R. Joaquim Nabuco, 21 - Centro, Salto - SP, 13328-300", contato:"@brechodamarcia" },
+      { nome:"Brechó Renascer", coords:[-23.19226,-47.30920], horario:"Seg a sex: 10h–18h<br>Sáb: 10h–14h", endereco:"R. América, 1251 - Jardim Celani, Salto - SP, 13326-100", contato:"(11) 95870-5308" },
+      { nome:"Brechó da Edna", coords:[-23.21771,-47.26425], horario:"Não informado", endereco:"R. Mal. Rondon - Jardim Santa Cruz, Salto - SP, 13323-540", contato:"@ednabrechoo" },
+      { nome:"Brechó da Leuda", coords:[-23.20017,-47.30171], horario:"Não informado", endereco:"R. Rui Barbosa, 1447 - Vila Teixeira, Salto - SP, 13320-360", contato:"-" }
+    ];
+
+    function mostrarInfo(local) {
+      document.getElementById("detalhes").innerHTML = `
+        <h3>${local.nome}</h3>
+        <div class="info-item"><strong>🕒 Horário:</strong> ${local.horario}</div>
+        <div class="info-item"><strong>📍 Endereço:</strong> ${local.endereco}</div>
+        <div class="info-item"><strong>📞 Contato:</strong> ${local.contato}</div>
+      `;
+    }
+
+    // Adiciona marcadores no mapa
+    locais.forEach(local => {
+      var marker = L.marker(local.coords).addTo(map);
+      marker.on('click', () => mostrarInfo(local));
+    });
+
+    // Busca ao digitar
+    function atualizarBusca() {
+      var termo = normalizar(document.getElementById("busca").value);
+      var resultadosDiv = document.getElementById("resultados");
+      resultadosDiv.innerHTML = "";
+      if (!termo) return;
+      var filtrados = locais.filter(l => normalizar(l.nome).includes(termo));
+      filtrados.forEach(local => {
+        var div = document.createElement("div");
+        div.className = "resultado";
+        div.innerText = local.nome;
+        div.onclick = () => {
+          map.setView(local.coords, 16);
+          mostrarInfo(local);
+        };
+        resultadosDiv.appendChild(div);
+      });
+    }
+
+    document.getElementById("busca").addEventListener("input", atualizarBusca);
+  </script>
 </body>
 </html>
