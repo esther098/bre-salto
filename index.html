@@ -320,21 +320,139 @@
     }
 
     var locais = [
-      { nome:"Brechó Amor Perfeito", coords:[-23.20435,-47.29485], horario:"Seg a sex: 09h–18h30<br>Sáb: 09h–14h", endereco:"R. Rui Barbosa, 599 - Centro, Salto - SP, 13320-230", contato:"@brecho_amorperfeito_" },
-      { nome:"Lugu’s Brechó Chic", coords:[-23.20742,-47.29241], horario:"Seg a sex: 10h–12h / 13h30–17h30<br>Sáb: 10h–13h", endereco:"R. Prudente de Moraes, 153 - Centro, Salto - SP, 13320-160", contato:"@lugusbrechochic" },
-      { nome:"Brechó Helena Costa", coords:[-23.20405,-47.29673], horario:"Seg a sex: 09h30–18h30<br>Sáb: 09h–14h", endereco:"R. Joaquim Nabuco, 54 - Vila Teixeira, Salto - SP, 13320-370", contato:"(11) 95874-8716" },
-      { nome:"Brechó Três Irmãs", coords:[-23.18807,-47.27414], horario:"Seg a sáb: 10h–19h", endereco:"R. Rússia, 662 - Jardim Planalto, Salto - SP, 13322-230", contato:"@3brecho_irmas" },
-      { nome:"Brechó da Rê", coords:[-23.21251,-47.27302], horario:"Seg a sex: 09h–14h30<br>Sáb: 09h–14h<br>Dom: 09h–12h", endereco:"R. Botucatu, 197 - Jardim da Cidade, Salto - SP, 13323-080", contato:"@brechodaregina2" },
-      { nome:"Brechó Solidário Casa Naim", coords:[-23.20371,-47.28998], horario:"Seg a sex: 09h–18h<br>Sáb: 09h–13h", endereco:"R. Barão do Rio Branco, 376 - Centro, Salto - SP, 13320-270", contato:"@casanaimbazar" },
-      { nome:"Burguesinha Brechó Chic", coords:[-23.20680,-47.29408], horario:"Seg a sex: 09h–18h<br>Sáb: 09h–15h", endereco:"R. Monsenhor Couto, 386 - Centro, Salto - SP, 13320-210", contato:"(11) 99898-2582" },
-      { nome:"Closet das Meninas", coords:[-23.20531,-47.29359], horario:"Não informado", endereco:"R. Vinte e Três de Maio, 340 - Centro, Salto - SP, 13320-010", contato:"@closetdasmeninas.salto" },
-      { nome:"Zilda Brechó", coords:[-23.19202,-47.29399], horario:"Ter a sáb: 08h–17h", endereco:"R. Andiroba, 472 - Vila Flora, Salto - SP, 13321-120", contato:"(11) 99591-4082" },
-      { nome:"Madamme Brechó", coords:[-23.20061,-47.29908], horario:"Seg a sex: 09h–18h<br>Sáb: 09h–13h", endereco:"Av. Dom Pedro II, 1207 - Centro, Salto - SP, 13320-241", contato:"(11) 95629-1776" },
-      { nome:"Brechó Encontro Perfeito", coords:[-23.19256,-47.29071], horario:"Seg a sex: 09h–18h<br>Sáb: 09h–14h", endereco:"R. Emílio Ribas, 222 - Bela Vista, Salto - SP, 13321-360", contato:"(11) 96701-3365" },
-      { nome:"Brechó da Márcia", coords:[-23.20443,-47.29646], horario:"Ter a sex: 09h–18h<br>Sáb: 09h–13h", endereco:"R. Joaquim Nabuco, 21 - Centro, Salto - SP, 13328-300", contato:"@brechodamarcia" },
-      { nome:"Brechó Renascer", coords:[-23.19226,-47.30920], horario:"Seg a sex: 10h–18h<br>Sáb: 10h–14h", endereco:"R. América, 1251 - Jardim Celani, Salto - SP, 13326-100", contato:"(11) 95870-5308" },
-      { nome:"Brechó da Edna", coords:[-23.21771,-47.26425], horario:"Não informado", endereco:"R. Mal. Rondon - Jardim Santa Cruz, Salto - SP, 13323-540", contato:"@ednabrechoo" },
-      { nome:"Brechó da Leuda", coords:[-23.20017,-47.30171], horario:"Não informado", endereco:"R. Rui Barbosa, 1447 - Vila Teixeira, Salto - SP, 13320-360", contato:"-" }
+     {
+        nome: "Brechó Amor Perfeito",
+        coords: [-23.20435, -47.29485],
+        horario: "Seg a sex: 09h–18h30<br>Sáb: 09h–14h",
+        endereco: "R. Rui Barbosa, 599 - Centro, Salto - SP, 13320-230",
+        contato: "@brecho_amorperfeito_"
+      },
+      {
+        nome: "Lugu's Brechó Chic",
+        coords: [-23.20742, -47.29241],
+        horario: "Seg a sex: 10h–12h / 13h30–17h30<br>Sáb: 10h–13h",
+        endereco: "R. Prudente de Moraes, 153 - Centro, Salto - SP, 13320-160",
+        contato: "@lugusbrechochic"
+      },
+      {
+        nome: "Brechó Helena Costa",
+        coords: [-23.20405, -47.29673],
+        horario: "Seg a sex: 09h30–18h30<br>Sáb: 09h–14h",
+        endereco: "R. Joaquim Nabuco, 54 - Vila Teixeira, Salto - SP, 13320-370",
+        contato: "(11) 95874-8716"
+      },
+      {
+        nome: "Brechó Três Irmãs",
+        coords: [-23.18807, -47.27414],
+        horario: "Seg a sáb: 10h–19h",
+        endereco: "R. Rússia, 662 - Jardim Planalto, Salto - SP, 13322-230",
+        contato: "@3brecho_irmas"
+      },
+      {
+        nome: "Brechó da Rê",
+        coords: [-23.21251, -47.27302],
+        horario: "Seg a sex: 09h–14h30<br>Sáb: 09h–14h<br>Dom: 09h–12h",
+        endereco: "R. Botucatu, 197 - Jardim da Cidade, Salto - SP, 13323-080",
+        contato: "@brechodaregina2"
+      },
+      {
+        nome: "Brechó Solidário Casa Naim",
+        coords: [-23.20371, -47.28998],
+        horario: "Seg a sex: 09h–18h<br>Sáb: 09h–13h",
+        endereco: "R. Barão do Rio Branco, 376 - Centro, Salto - SP, 13320-270",
+        contato: "@casanaimbazar"
+      },
+      {
+        nome: "Burguesinha Brechó Chic",
+        coords: [-23.20680, -47.29408],
+        horario: "Seg a sex: 09h–18h<br>Sáb: 09h–15h",
+        endereco: "R. Monsenhor Couto, 386 - Centro, Salto - SP, 13320-210",
+        contato: "(11) 99898-2582"
+      },
+      {
+        nome: "Closet das Meninas",
+        coords: [-23.20531, -47.29359],
+        horario: "Não informado",
+        endereco: "R. Vinte e Três de Maio, 340 - Centro, Salto - SP, 13320-010",
+        contato: "@closetdasmeninas.salto | (11) 98824-0446"
+      },
+      {
+        nome: "Zilda Brechó",
+        coords: [-23.19202, -47.29399],
+        horario: "Ter a sáb: 08h–17h",
+        endereco: "R. Andiroba, 472 - Vila Flora, Salto - SP, 13321-120",
+        contato: "(11) 99591-4082"
+      },
+      {
+        nome: "Madamme Brechó",
+        coords: [-23.20061, -47.29908],
+        horario: "Seg a sex: 09h–18h<br>Sáb: 09h–13h",
+        endereco: "Av. Dom Pedro II, 1207 - Centro, Salto - SP, 13320-241",
+        contato: "(11) 95629-1776"
+      },
+      {
+        nome: "Brechó Encontro Perfeito",
+        coords: [-23.19256, -47.29071],
+        horario: "Seg a sex: 09h–18h<br>Sáb: 09h–14h",
+        endereco: "R. Emílio Ribas, 222 - Bela Vista, Salto - SP, 13321-360",
+        contato: "(11) 96701-3365"
+      },
+      {
+        nome: "Brechó da Márcia",
+        coords: [-23.20443, -47.29646],
+        horario: "Ter a sex: 09h–18h<br>Sáb: 09h–13h",
+        endereco: "R. Joaquim Nabuco, 21 - Centro, Salto - SP, 13328-300",
+        contato: "@brechodamarcia"
+      },
+      {
+        nome: "Brechó Renascer",
+        coords: [-23.19226, -47.30920],
+        horario: "Seg a sex: 10h–18h<br>Sáb: 10h–14h",
+        endereco: "R. América, 1251 - Jardim Celani, Salto - SP, 13326-100",
+        contato: "(11) 95870-5308"
+      },
+      {
+        nome: "Brechó da Edna",
+        coords: [-23.21771, -47.26425],
+        horario: "Não informado",
+        endereco: "R. Mal. Rondon - Jardim Santa Cruz, Salto - SP, 13323-540",
+        contato: "@ednabrechoo | (11) 96701-3365"
+      },
+      {
+        nome: "Brechó da Leuda",
+        coords: [-23.20017, -47.30171],
+        horario: "Não informado",
+        endereco: "R. Rui Barbosa, 1447 - Vila Teixeira, Salto - SP, 13320-360",
+        contato: "Não informado"
+      },
+      {
+        nome: "Brechó — R. Quintino Bocaiúva",
+        coords: [-23.202633741168864, -47.28841441964242],
+        horario: "Não informado",
+        endereco: "R. Quintino Bocaiúva, 178 - Centro, Salto - SP, 13320-110",
+        contato: "Não informado"
+      },
+      {
+        nome: "Brechó — R. Joaquim Nabuco, 704",
+        coords: [-23.200794477682663, -47.30183077546329],
+        horario: "Não informado",
+        endereco: "R. Joaquim Nabuco, 704 - Vila Teixeira, Salto - SP, 13320-370",
+        contato: "Não informado"
+      },
+      {
+        nome: "Patricia Almeida Brechó",
+        coords: [-23.227689662291244, -47.268314304298286],
+        horario: "Não informado",
+        endereco: "R. Paulino Aíres de Aguirre, 2291 - Jardim Santa Efigenia, Salto - SP, 13323-452",
+        contato: "@brechosalto | (11) 99590-5006"
+      },
+      {
+        nome: "Brechó e Conserto",
+        coords: [-23.206868985745405, -47.29389248895558],
+        horario: "Não informado",
+        endereco: "R. Monsenhor Couto, 370 - Centro, Salto - SP",
+        contato: "Não informado"
+      }
     ];
 
     function mostrarInfo(local) {
