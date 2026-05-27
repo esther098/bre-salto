@@ -884,3 +884,139 @@ a {
     border-radius: 20px;
   }
 }
+/* ============================================================
+   MAPA INTERATIVO (Brechós de Salto)
+   Classes com prefixo "mapa-brecho-" para evitar conflitos
+   ============================================================ */
+
+/* Seção principal do mapa */
+.mapa-brecho-secao {
+  width: 100%;
+  padding: 60px 40px;
+  background: #e8f0ed;
+}
+
+/* Título da seção do mapa */
+.mapa-brecho-secao__titulo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  letter-spacing: 3px;
+  color: #2a5f4c;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Container flex do mapa + sidebar */
+.mapa-brecho-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Mapa Leaflet */
+.mapa-brecho-leaflet {
+  height: 500px;
+  width: 65%;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* Sidebar de informações */
+.mapa-brecho-info {
+  width: 32%;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  max-height: 500px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Campo de busca */
+.mapa-brecho-busca {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.mapa-brecho-busca:focus {
+  border-color: #2a5f4c;
+}
+
+/* Resultados da busca */
+.mapa-brecho-resultados {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+/* Cada item de resultado */
+.mapa-brecho-resultado-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.mapa-brecho-resultado-item:hover {
+  background: #f0f2f5;
+}
+
+/* Detalhes do brechó selecionado */
+.mapa-brecho-detalhes {
+  border-top: 2px solid #2a5f4c;
+  padding-top: 15px;
+}
+
+.mapa-brecho-detalhes h3 {
+  color: #2a5f4c;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+/* Itens de informação (horário, endereço, contato) */
+.mapa-brecho-info-item {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.mapa-brecho-info-item strong {
+  color: #1a4d3e;
+}
+
+/* Placeholder do mapa-brecho-detalhes */
+.mapa-brecho-placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .mapa-brecho-container {
+    flex-direction: column;
+  }
+  
+  .mapa-brecho-leaflet {
+    width: 100%;
+  }
+  
+  .mapa-brecho-info {
+    width: 100%;
+  }
+  
+  .mapa-brecho-secao {
+    padding: 40px 20px;
+  }
+}
