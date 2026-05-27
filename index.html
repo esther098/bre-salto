@@ -9,6 +9,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap"
     rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -223,14 +224,7 @@
 
     </section>
 
-    <!-- ========== SEÇÃO: MAPA INTERATIVO ========== -->
-    <section class="secao-mapa" id="mapa" aria-labelledby="titulo-mapa">
-      <h2 class="secao-mapa__titulo" id="titulo-mapa">Brechós em Salto</h2>
-
-      <div class="mapa">
-        <img src="imagens/ChatGPT Image 3 de mar. de 2026, 07_23_38.png" alt="Mapa interativo de brechós em Salto (SP)" />
-      </div>
-    </section>
+ 
 
     <!-- ========== SEÇÃO: SOBRE O PROJETO ========== -->
     <section class="grade_destaques-semana sobre-o-projeto" id="projeto" aria-labelledby="titulo-sobre">
@@ -346,9 +340,9 @@
     function mostrarInfo(local) {
       document.getElementById("detalhes").innerHTML = `
         <h3>${local.nome}</h3>
-        <div class="info-item"><strong>🕒 Horário:</strong> ${local.horario}</div>
-        <div class="info-item"><strong>📍 Endereço:</strong> ${local.endereco}</div>
-        <div class="info-item"><strong>📞 Contato:</strong> ${local.contato}</div>
+        <div class="mapa-brecho-info-item"><strong>🕒 Horário:</strong> ${local.horario}</div>
+        <div class="mapa-brecho-info-item"><strong>📍 Endereço:</strong> ${local.endereco}</div>
+        <div class="mapa-brecho-info-item"><strong>📞 Contato:</strong> ${local.contato}</div>
       `;
     }
 
@@ -367,7 +361,7 @@
       var filtrados = locais.filter(l => normalizar(l.nome).includes(termo));
       filtrados.forEach(local => {
         var div = document.createElement("div");
-        div.className = "resultado";
+        div.className = "mapa-brecho-resultado-item";
         div.innerText = local.nome;
         div.onclick = () => {
           map.setView(local.coords, 16);
